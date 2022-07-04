@@ -10,12 +10,8 @@ export const getDefaultNavIndex = (pathname: string) => {
   switch (pathname) {
     case Routes.HOME:
       return 1
-    case Routes.DATA:
+    case Routes.TENANCIES:
       return 2
-    case Routes.TABLE:
-    case Routes.LIST:
-    case Routes.FORM:
-      return 3
     default:
       return 0
   }
@@ -29,51 +25,22 @@ export const Nav: FC = () => {
     },
     {
       itemIndex: 1,
-      text: 'Home',
-      iconId: 'defaultMenu',
-      callback: navigate(history, Routes.HOME),
-    },
-    {
-      itemIndex: 2,
-      text: 'Data',
-      iconId: 'dataMenu',
-      callback: navigate(history, Routes.DATA),
-    },
-    {
-      itemIndex: 3,
-      text: 'UI',
-      iconId: 'uiMenu',
-      callback: navigate(history, Routes.TABLE),
-      subItems: [
-        {
-          itemIndex: 1,
-          callback: navigate(history, Routes.TABLE),
-          text: 'Table',
-        },
-        {
-          itemIndex: 2,
-          callback: navigate(history, Routes.LIST),
-          text: 'List',
-        },
-        {
-          itemIndex: 3,
-          callback: navigate(history, Routes.FORM),
-          text: 'Form',
-        },
-      ],
+      text: 'Search',
+      iconId: 'searchMenu',
+      callback: navigate(history, Routes.TENANCIES),
     },
   ]
 
   if (!connectIsDesktop) {
     navOptions.push(
       {
-        itemIndex: 4,
+        itemIndex: 2,
         callback: () => (window.location.href = window.reapit.config.marketplaceUrl),
         iconId: 'appsMenu',
         text: 'Apps',
       },
       {
-        itemIndex: 5,
+        itemIndex: 3,
         callback: connectLogoutRedirect,
         isSecondary: true,
         iconId: 'logoutMenu',

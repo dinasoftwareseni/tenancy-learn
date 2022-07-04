@@ -4,5 +4,7 @@ export const Routes = {
   TABLE: '/table',
   LIST: '/list',
   DATA: '/data',
+  TENANCIES: '/tenancies',
+  TENANCIES_CHECK: '/tenancies-check/:tenancyId',
   LOGIN: '/login',
 }
