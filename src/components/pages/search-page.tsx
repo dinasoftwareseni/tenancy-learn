@@ -20,8 +20,6 @@ import {
 import React from 'react'
 import { useHistory } from 'react-router'
 import { useGetTenancyList } from '../../platform-api/tenancies-api'
-// import { useGetApplicantById } from '../../platform-api/applicant-api'
-// import { useParams } from 'react-router'
 
 type SearchPageProps = {
   controlsButton?: React.ReactNode
