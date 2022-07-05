@@ -20,7 +20,7 @@ import {
 import React from 'react'
 import { useHistory } from 'react-router'
 import { useGetTenancyList } from '../../platform-api/tenancies-api'
-import { useGetApplicantById } from '../../platform-api/applicant-api'
+// import { useGetApplicantById } from '../../platform-api/applicant-api'
 // import { useParams } from 'react-router'
 
 type SearchPageProps = {
@@ -29,13 +29,7 @@ type SearchPageProps = {
 
 export const SearchPage: React.FC<SearchPageProps> = ({ controlsButton }) => {
   const history = useHistory()
-
   const tenanciesListResult = useGetTenancyList()
-
-  // const { applicantId } = useParams<{ applicantId: string }>()
-  // console.log('applicantId:', applicantId)
-  // const applicantResult = useGetApplicantById(applicantId)
-  // console.log('applicant: ', applicantResult?.data?.related)
 
   return (
     <FlexContainer isFlexAuto>
@@ -83,18 +77,8 @@ export const SearchPage: React.FC<SearchPageProps> = ({ controlsButton }) => {
           <div className={cx(elFlex, elFlexColumn)}>
             <Table
               numberColumns={6}
-              rows={tenanciesListResult.data?._embedded?.map(({ id, negotiatorId, propertyId, applicantId }) => {
-                // const applicantName = applicantResult.data?.related?.map((x) => x.name)
-                // console.log('applicantName', applicantName)
-                // const applicantResult = useGetApplicantById(applicantId!)
-
-                // if(applicantResult != undefined){
-                //   console.log('applicantResult', applicantResult.data?.related[0]?.name
-                // }
-
-                // const applicantName = applicantResult.data?.related[0].name
-
-                // console.log(applicantId)
+              rows={tenanciesListResult.data?._embedded?.map((item) => {
+                const { id, negotiatorId, propertyId, applicantId } = item
 
                 return {
                   cells: [
@@ -128,7 +112,7 @@ export const SearchPage: React.FC<SearchPageProps> = ({ controlsButton }) => {
                     },
                     {
                       label: 'Applicant Name',
-                      value: 'tes',
+                      value: item['applicantName'],
                       narrowTable: {
                         showLabel: true,
                       },
